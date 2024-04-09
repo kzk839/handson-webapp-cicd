@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://index.docker.io/v1/
-        username: ${{ secrets.AzureAppService_ContainerUsername_db9fa218832e4d76952e75f4a6551f76 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_f477b74aeb9149b1a4207bb055b3b79d }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_60da200f5e474a1483f14599d9c0f73f }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_42203acd3b7c49f9a6918dd2be928c29 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_db9fa218832e4d76952e75f4a6551f76 }}/nginx-js:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_60da200f5e474a1483f14599d9c0f73f }}/nginx-js:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'kkcicddemoapp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_73c5575e65764d3baad053d817e627d1 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_db9fa218832e4d76952e75f4a6551f76 }}/nginx-js:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_70108b5b653e46adb2aca7e32c7b370d }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_60da200f5e474a1483f14599d9c0f73f }}/nginx-js:${{ github.sha }}'
